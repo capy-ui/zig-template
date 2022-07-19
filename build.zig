@@ -1,4 +1,4 @@
-qmconst std = @import("std");
+const std = @import("std");
 const deps = @import("deps.zig");
 
 pub fn build(b: *std.build.Builder) !void {
@@ -13,8 +13,8 @@ pub fn build(b: *std.build.Builder) !void {
     const mode = b.standardReleaseOptions();
 
     const exe = b.addExecutable("zgt-template", "src/main.zig");
-    const pathToZgt = deps.pkgs.zgt.directory;
-    try @import(".zigmod/deps/git/github.com/zenith391/zgt/build_zgt.zig").install(exe, pathToZgt);
+    const pathToZgt = ".zigmod/deps/git/github.com/zenith391/zgt/";
+    try deps.imports.zgt.install(exe, pathToZgt);
     exe.setTarget(target);
     exe.setBuildMode(mode);
     exe.install();

@@ -1,2 +1,14 @@
 # zgt-template
 Simple template for a zgt app
+
+## Building
+
+On first build, don't forget to ensure [zigmod](https://github.com/nektro/zigmod/releases/latest)
+is downloaded and installed on your machine. Then, run:
+```sh
+zigmod fetch
+```
+And you're ready to go!
+
+Then if you wish to run the app simply execute
+`zig build run` (`zigmod fetch` is no longer required)

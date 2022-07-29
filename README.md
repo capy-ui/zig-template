@@ -1,5 +1,5 @@
-# zgt-template
-Simple template for a zgt app
+# capy-template
+Simple template for a Capy app
 
 ## Building
 

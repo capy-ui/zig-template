@@ -14,9 +14,9 @@ pub fn build(b: *std.build.Builder) !void {
 
     const exe = b.addExecutable("zgt-template", "src/main.zig");
     const pathToCapy = ".zigmod/deps/git/github.com/zenith391/capy/";
-    try deps.imports.capy.install(exe, pathToCapy);
     exe.setTarget(target);
     exe.setBuildMode(mode);
+    try deps.imports.capy.install(exe, pathToCapy);
     exe.install();
 
     const run_cmd = exe.run();

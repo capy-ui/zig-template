@@ -1,7 +1,8 @@
 id: eje8wf3r4lz8em2jnign4ocxywosgkrk1dr6lgcbb0y1ne6y
-name: zgt-template
+name: capy-template
 license: Unlicense
 description: Simple template for Capy apps
 build_dependencies:
     - src: git https://github.com/zenith391/capy
+    - src: git https://github.com/Luukdegram/apple_pie # this is only necessary if you want 'zig build serve'
 root_depedencies:

@@ -43,11 +43,11 @@ pub fn build(b: *std.build.Builder) !void {
     if (@import("builtin").zig_backend != .stage2_llvm) {
         const serve = WebServerStep.create(b, wasm);
         serve.step.dependOn(&wasm.install_step.?.step);
-        const serve_step = b.step("serve", "Start a web server to run this example");
+        const serve_step = b.step("serve", "Start a local web server to run this application");
         serve_step.dependOn(&serve.step);
     } else {
         var step = b.addLog("Please use 'zig build serve -fstage1'", .{});
-        const serve_step = b.step("serve", "Start a web server to run this example");
+        const serve_step = b.step("serve", "Start a local web server to run this application");
         serve_step.dependOn(&step.step);
     }
 
@@ -104,7 +104,7 @@ const WebServerStep = struct {
     fn index(context: *Context, response: *http.Response, request: http.Request) !void {
         const allocator = request.arena;
         const buildRoot = context.builder.build_root;
-        const file = try std.fs.cwd().openFile(try std.fs.path.join(allocator, &.{ buildRoot, PATH_TO_CAPY ++ "src/backends/wasm/page.html" }), .{});
+        const file = try std.fs.cwd().openFile(try std.fs.path.join(allocator, &.{ buildRoot, PATH_TO_CAPY ++ "src/backends/wasm/index.html" }), .{});
         defer file.close();
         const text = try file.readToEndAlloc(allocator, std.math.maxInt(usize));
 

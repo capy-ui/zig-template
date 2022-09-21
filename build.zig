@@ -1,7 +1,7 @@
 const std = @import("std");
 const deps = @import("deps.zig");
 
-const PATH_TO_CAPY = ".zigmod/deps/git/github.com/zenith391/capy/";
+const PATH_TO_CAPY = ".zigmod/deps/git/github.com/capy-ui/capy/";
 
 pub fn build(b: *std.build.Builder) !void {
     // Standard target options allows the person running `zig build` to choose

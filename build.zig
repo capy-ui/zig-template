@@ -37,12 +37,11 @@ pub fn build(b: *std.build.Builder) !void {
     // Set the target to WebAssembly
     wasm.setTarget(comptime std.zig.CrossTarget.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable);
     wasm.setBuildMode(mode);
-    wasm.install();
     try deps.imports.capy.install(wasm, PATH_TO_CAPY);
 
     if (@import("builtin").zig_backend != .stage2_llvm) {
         const serve = WebServerStep.create(b, wasm);
-        serve.step.dependOn(&wasm.install_step.?.step);
+        serve.step.dependOn(&wasm.step);
         const serve_step = b.step("serve", "Start a local web server to run this application");
         serve_step.dependOn(&serve.step);
     } else {

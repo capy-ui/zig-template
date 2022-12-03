@@ -17,7 +17,7 @@ pub fn build(b: *std.build.Builder) !void {
     const exe = b.addExecutable("capy-template", "src/main.zig");
     exe.setTarget(target);
     exe.setBuildMode(mode);
-    try deps.imports.capy.install(exe, PATH_TO_CAPY);
+    try deps.imports.capy.install(exe, .{});
     exe.install();
 
     const run_cmd = exe.run();
@@ -37,7 +37,7 @@ pub fn build(b: *std.build.Builder) !void {
     // Set the target to WebAssembly
     wasm.setTarget(comptime std.zig.CrossTarget.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable);
     wasm.setBuildMode(mode);
-    try deps.imports.capy.install(wasm, PATH_TO_CAPY);
+    try deps.imports.capy.install(wasm, .{});
 
     if (@import("builtin").zig_backend != .stage2_llvm) {
         const serve = WebServerStep.create(b, wasm);

@@ -10,13 +10,16 @@ pub fn build(b: *std.build.Builder) !void {
     // for restricting supported target set are available.
     const target = b.standardTargetOptions(.{});
 
-    // Standard release options allow the person running `zig build` to select
+    // Standard optimize options allow the person running `zig build` to select
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
-    const mode = b.standardReleaseOptions();
+    const optimize = b.standardOptimizeOption(.{});
 
-    const exe = b.addExecutable("capy-template", "src/main.zig");
-    exe.setTarget(target);
-    exe.setBuildMode(mode);
+    const exe = b.addExecutable(.{
+        .name = "capy-template",
+        .root_source_file = .{ .path = "src/main.zig" },
+        .target = target,
+        .optimize = optimize,
+    });
     try deps.imports.capy.install(exe, .{});
     exe.install();
 
@@ -31,12 +34,13 @@ pub fn build(b: *std.build.Builder) !void {
 
     // Building for WebAssembly
     // WebAssembly doesn't have a concept of executables, so the way it works is that we make a shared library and capy exports a '_start' function automatically
-    const wasm = b.addSharedLibrary("capy-template", "src/main.zig", .unversioned);
-
     @setEvalBranchQuota(5000);
-    // Set the target to WebAssembly
-    wasm.setTarget(comptime std.zig.CrossTarget.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable);
-    wasm.setBuildMode(mode);
+    const wasm = b.addSharedLibrary(.{
+        .name = "capy-template",
+        .root_source_file = .{ .path = "src/main.zig" },
+        .target = comptime std.zig.CrossTarget.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable,
+        .optimize = optimize,
+    });
     try deps.imports.capy.install(wasm, .{});
 
     if (@import("builtin").zig_backend != .stage2_llvm) {
@@ -50,9 +54,11 @@ pub fn build(b: *std.build.Builder) !void {
         serve_step.dependOn(&step.step);
     }
 
-    const exe_tests = b.addTest("src/main.zig");
-    exe_tests.setTarget(target);
-    exe_tests.setBuildMode(mode);
+    const exe_tests = b.addTest(.{
+        .root_source_file = .{ .path = "src/main.zig" },
+        .target = target,
+        .optimize = optimize,
+    });
 
     const test_step = b.step("test", "Run unit tests");
     test_step.dependOn(&exe_tests.step);

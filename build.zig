@@ -18,7 +18,7 @@ pub fn build(b: *std.build.Builder) !void {
         .target = target,
         .optimize = optimize,
     });
-    exe.install();
+    b.installArtifact(exe);
 
     const run_cmd = try deps.imports.capy.install(exe, .{ .args = b.args });
     const run_step = b.step("run", "Run the app");

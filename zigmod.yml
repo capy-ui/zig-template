@@ -4,5 +4,4 @@ license: Unlicense
 description: Simple template for Capy apps
 build_dependencies:
     - src: git https://github.com/capy-ui/capy
-    - src: git https://github.com/Luukdegram/apple_pie # this is only necessary if you want 'zig build serve'
 root_depedencies:

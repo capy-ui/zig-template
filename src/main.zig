@@ -11,7 +11,7 @@ pub fn main() !void {
     try window.set(capy.Label(.{ .text = "Hello, World", .alignment = .Center }));
 
     window.setTitle("Hello");
-    window.resize(250, 100);
+    window.setPreferredSize(250, 100);
     window.show();
 
     capy.runEventLoop();

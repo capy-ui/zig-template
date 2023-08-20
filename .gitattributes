@@ -1,3 +1,2 @@
 * text=auto
 *.zig text eol=lf
-zigmod.* text eol=lf

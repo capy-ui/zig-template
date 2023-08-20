@@ -1,0 +1,8 @@
+.{
+    .name = "capy-template",
+    .version = "0.0.0",
+    .dependencies = .{ .capy = .{
+        .url = "https://github.com/capy-ui/capy/archive/refs/heads/master.tar.gz",
+        .hash = "122018db7300f068245137fc10c739c22f6f59dfe0af0ae6d1d207bd5f3a7827d840",
+    } },
+}

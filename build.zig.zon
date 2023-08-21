@@ -2,7 +2,10 @@
     .name = "capy-template",
     .version = "0.0.0",
     .dependencies = .{ .capy = .{
-        .url = "https://github.com/capy-ui/capy/archive/refs/heads/master.tar.gz",
-        .hash = "122018db7300f068245137fc10c739c22f6f59dfe0af0ae6d1d207bd5f3a7827d840",
+        .url = "https://github.com/capy-ui/capy/archive/a2be8c8bc87d522c3329406ec6d0e80b59f7ccb8.tar.gz",
+        .hash = "1220406249366af87d110f791157cc89a356264557dfbd22804faf03a3be6b3291df",
+        //If you want to use the most current version of the master branch, use the url below.
+        //Delete the '.hash = "...",'. Run 'zig build'. It will fail, providing you with the uptodate hash.
+        //.url = "https://github.com/capy-ui/capy/archive/refs/heads/master.tar.gz",
     } },
 }

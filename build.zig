@@ -1,5 +1,5 @@
 const std = @import("std");
-const deps = @import("deps.zig");
+const capy = @import("capy");
 
 pub fn build(b: *std.build.Builder) !void {
     // Standard target options allows the person running `zig build` to choose
@@ -20,7 +20,7 @@ pub fn build(b: *std.build.Builder) !void {
     });
     b.installArtifact(exe);
 
-    const run_cmd = try deps.imports.capy.install(exe, .{ .args = b.args });
+    const run_cmd = try capy.install(exe, .{ .args = b.args });
     const run_step = b.step("run", "Run the app");
     run_step.dependOn(run_cmd);
 
@@ -33,7 +33,7 @@ pub fn build(b: *std.build.Builder) !void {
         .target = comptime std.zig.CrossTarget.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable,
         .optimize = optimize,
     });
-    const serve = try deps.imports.capy.install(wasm, .{});
+    const serve = try capy.install(wasm, .{});
     const serve_step = b.step("serve", "Start a local web server to run this application");
     serve_step.dependOn(serve);
 

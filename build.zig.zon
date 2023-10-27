@@ -1,6 +1,7 @@
 .{
     .name = "capy-template",
     .version = "0.0.0",
+    .paths = .{ "."},
     .dependencies = .{ .capy = .{
         .url = "https://github.com/capy-ui/capy/archive/60fa439feda483611a4bf7767bab108e00a7a3d2.tar.gz",
         .hash = "12201751d2094cde9630bc080e6ce1d8982ff03bdd30a3103abd21321a8361a7e39d",

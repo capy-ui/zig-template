@@ -27,7 +27,7 @@ pub fn build(b: *std.build.Builder) !void {
     // Building for WebAssembly
     // WebAssembly doesn't have a concept of executables, so the way it works is that we make a shared library and capy exports a '_start' function automatically
     @setEvalBranchQuota(5000);
-    const wasm = b.addSharedLibrary(.{
+    const wasm = b.addExecutable(.{
         .name = "capy-template",
         .root_source_file = .{ .path = "src/main.zig" },
         .target = comptime std.zig.CrossTarget.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable,

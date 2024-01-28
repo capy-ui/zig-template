@@ -1,11 +1,15 @@
 # capy-template
 Simple template for a Capy app
 
-**Target Zig Version**: zig `0.12.0-dev.1835+697b8f7d2`
+**Target Zig Version: zig `0.12.0-dev.2063+804cee3b9` ([2024.1.0-mach](https://machengine.org/about/nominated-zig/))**
 
 ## Building
 If you wish to run the app simply execute
-`zig build run`
+```sh
+zig build run
+```
 
 In the same way, to build and run the app for WebAssembly, execute
-`zig build serve`
+```sh
+zig build serve
+```

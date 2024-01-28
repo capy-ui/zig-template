@@ -1,15 +1,8 @@
 const std = @import("std");
 const capy = @import("capy");
 
-pub fn build(b: *std.build.Builder) !void {
-    // Standard target options allows the person running `zig build` to choose
-    // what target to build for. Here we do not override the defaults, which
-    // means any target is allowed, and the default is native. Other options
-    // for restricting supported target set are available.
+pub fn build(b: *std.Build) !void {
     const target = b.standardTargetOptions(.{});
-
-    // Standard optimize options allow the person running `zig build` to select
-    // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const optimize = b.standardOptimizeOption(.{});
 
     const exe = b.addExecutable(.{
@@ -30,7 +23,9 @@ pub fn build(b: *std.build.Builder) !void {
     const wasm = b.addExecutable(.{
         .name = "capy-template",
         .root_source_file = .{ .path = "src/main.zig" },
-        .target = comptime std.zig.CrossTarget.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable,
+        .target = b.resolveTargetQuery(
+            comptime std.Target.Query.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable,
+        ),
         .optimize = optimize,
     });
     const serve = try capy.install(wasm, .{});

@@ -13,3 +13,9 @@ In the same way, to build and run the app for WebAssembly, execute
 ```sh
 zig build serve
 ```
+
+## Updating Capy
+To update Capy, run the following command in your terminal:
+```sh
+zig fetch --save=capy git+https://github.com/capy-ui/capy
+```

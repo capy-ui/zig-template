@@ -4,11 +4,8 @@
     .paths = .{"."},
     .dependencies = .{
         .capy = .{
-            .url = "https://github.com/capy-ui/capy/archive/d55a9ddf39ebaeed7d25279c08922bb8cf4613db.tar.gz",
-            .hash = "12202d8a1a46e0e78dc366ba3cb9843821b65ed3d0e110cf705bdeaba9eb8f75ac75",
-            //If you want to use the most current version of the master branch, use the url below.
-            //Delete the '.hash = "...",'. Run 'zig build'. It will fail, providing you with the uptodate hash.
-            //.url = "https://github.com/capy-ui/capy/archive/refs/heads/master.tar.gz",
+            .url = "git+https://github.com/capy-ui/capy#971357b54062b9e99d09f3a8777e388e8d0f82ec",
+            .hash = "1220e9d87e7027adbd83ca5dc6fbcd046ccc0e1f1b91b4d69541f13cd233fddcdfd5",
         },
     },
 }

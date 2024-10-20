@@ -31,7 +31,7 @@ pub fn build(b: *std.Build) !void {
         .name = "capy-template",
         .root_source_file = b.path("src/main.zig"),
         .target = b.resolveTargetQuery(
-            comptime std.Target.Query.parse(.{ .arch_os_abi = "wasm32-freestanding" }) catch unreachable,
+            comptime std.Target.Query.parse(.{ .arch_os_abi = "wasm32-wasi" }) catch unreachable,
         ),
         .optimize = optimize,
     });

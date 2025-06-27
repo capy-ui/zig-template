@@ -1,11 +1,9 @@
 .{
-    .name = "capy-template",
+    .name = .capy_template,
+    .fingerprint = 0xa46d6299ca3399c4, // DON'T FORGET TO GENERATE A NEW FINGERPRINT
     .version = "0.0.0",
     .paths = .{"."},
     .dependencies = .{
-        .capy = .{
-            .url = "git+https://github.com/capy-ui/capy#971357b54062b9e99d09f3a8777e388e8d0f82ec",
-            .hash = "1220e9d87e7027adbd83ca5dc6fbcd046ccc0e1f1b91b4d69541f13cd233fddcdfd5",
-        },
+        .capy = .{ .url = "git+https://github.com/capy-ui/capy#7c3023fa79e4d2a72c51577f95d066fb6cbfef31", .hash = "capy-0.4.1-kru7R0PW3QVTOpqFEgPi71hgn82drM0T1YoEKffnkeJ3" },
     },
 }

@@ -5,11 +5,12 @@ const capy = @import("capy");
 pub usingnamespace capy.cross_platform;
 
 pub fn main() !void {
-    try capy.backend.init();
+    try capy.init();
+    defer capy.deinit();
 
     var window = try capy.Window.init();
     try window.set(
-        capy.label(.{ .text = "Hello, World", .alignment = .Center }),
+        capy.label(.{ .text = "Hello, World", .layout = .{ .alignment = .Center } }),
     );
 
     window.setTitle("Hello");

@@ -1,7 +1,7 @@
 # capy-template
 Simple template for a Capy app
 
-**Target Zig Version: zig `0.13.0` / ([2024.5.0-mach](https://machengine.org/about/nominated-zig/))**
+**Target Zig Version: zig `0.14.1`**
 
 ## Building
 If you wish to run the app simply execute
